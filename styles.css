@@ -1,0 +1,240 @@
+:root {
+  --bg-hard: #1d2021;
+  --bg-soft: #32302f;
+  --grid-line: rgba(255,255,255,0.2);
+  --red: #cc241d;
+  --green: #98971a;
+  --yellow: #d79921;
+  --blue: #458588;
+  --purple: #b16286;
+  --aqua: #689d6a;
+  --orange: #d65d0e;
+  --fg: #ebdbb2;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-hard);
+  color: var(--fg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.start-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-hard);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.start-content {
+  text-align: center;
+  background-color: var(--bg-soft);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  max-width: 400px;
+}
+
+.start-content h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.start-content p {
+  color: rgba(235,219,178,0.7);
+  margin: 10px 0;
+}
+
+.game-container {
+  display: flex;
+  gap: 20px;
+  background-color: var(--bg-soft);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.game-area {
+  width: 300px;
+  height: 600px;
+  background-color: rgba(0,0,0,0.3);
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.game-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 150px;
+}
+
+.next-block-container {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.next-block-label {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.next-block {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0,0,0,0.2);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.game-block {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+  transition: transform 0.1s, opacity 0.2s;
+  z-index: 2;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: -1px -1px;
+}
+
+.game-block.clearing {
+  transform: scale(0.9);
+  opacity: 0.5;
+}
+
+.ghost-block {
+  opacity: 0.3;
+}
+
+.combo {
+  text-align: center;
+  font-size: 18px;
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.overlay-content {
+  position: relative;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over, .pause-menu {
+  text-align: center;
+  background-color: var(--bg-soft);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 300px;
+}
+
+.game-over {
+  display: none;
+}
+
+.pause-menu {
+  display: none;
+}
+
+.overlay-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#pauseBtn {
+  margin-top: 15px;
+  width: 100%;
+}
+
+button {
+  background-color: var(--green);
+  color: var(--bg-hard);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--aqua);
+}
