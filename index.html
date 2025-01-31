@@ -1,17 +1,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gruvbox Tetris</title>
+  <title>tetris</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="start-menu" id="startMenu">
     <div class="start-content">
-      <h1>Gruvbox Tetris</h1>
-      <p>Use WASD to move and rotate</p>
-      <p>Space to hard drop</p>
-      <button id="startBtn">Start Game</button>
+      <h1>tetris</h1>
+      <button id="startBtn">start game</button>
     </div>
   </div>
   <div class="game-container" id="gameContainer" style="display:none;">
@@ -60,5 +58,11 @@
     </div>
   </div>
   <script type="module" src="tetris.js"></script>
+<script>
+window.addEventListener("resize", function() {
+    document.body.style.width = window.innerWidth + "px";
+    document.body.style.height = window.innerHeight + "px";
+});
+</script>
 </body>
 </html>
